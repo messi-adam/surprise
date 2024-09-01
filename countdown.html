@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise</title>
+    <style>
+        /* Basic styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://i.ytimg.com/vi/5zQBUoj7-ic/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDe8L6gZokwxsttwk8kcOPi5WRFNQ') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .countdown-box {
+            padding: 20px 40px;
+            background: linear-gradient(45deg, #ff69b4, #ff6347, #ffa500);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            animation: box-glow 1.5s infinite alternate;
+            position: relative;
+            margin: 20px 0; /* Adjusted margin to create space between images */
+        }
+
+        .countdown {
+            font-size: 60px;
+            margin-top: 20px;
+            color: rgb(255, 0, 0);
+            background: -webkit-linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textColorChange 3s linear infinite;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .zoom {
+            transform: scale(1.5);
+        }
+
+        .cat-image {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .bottom-right-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .bottom-right-image {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes textColorChange {
+            0% { color: rgb(255, 0, 0); }
+            50% { color: rgb(0, 255, 0); }
+            100% { color: rgb(0, 0, 255); }
+        }
+
+        @keyframes box-glow {
+            from {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            }
+            to {
+                box-shadow: 0 4px 20px rgba(255, 105, 180, 0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <img src="https://uploads.dailydot.com/2018/10/olli-the-polite-cat.jpg?auto=compress&fm=pjpg" alt="Polite Cat" class="cat-image" id="catImage">
+        <div class="countdown-box" onclick="startCountdown()">
+            Click for a Surprise
+        </div>
+        <div class="bottom-right-container">
+            <img src="Screenshot (95).png" alt="Bottom Right Image" class="bottom-right-image" id="bottomRightImage">
+        </div>
+    </div>
+
+    <div id="countdown" class="countdown"></div>
+
+    <script>
+        function startCountdown() {
+            let countdownElement = document.getElementById('countdown');
+            let countdownBox = document.querySelector('.countdown-box');
+            let catImage = document.getElementById('catImage');
+            let countdown = 10;
+
+            countdownBox.style.display = 'none';
+            catImage.style.display = 'none';
+
+            let countdownInterval = setInterval(() => {
+                countdownElement.textContent = countdown;
+
+                if (countdown <= 3) {
+                    countdownElement.classList.add('zoom');
+                } else {
+                    countdownElement.classList.remove('zoom');
+                }
+
+                countdown--;
+
+                if (countdown < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.style.opacity = '0'; 
+                    setTimeout(() => {
+                        document.body.style.opacity = '0';  
+                        setTimeout(() => {
+                            window.location.href = "birthday.html"; // Ensure this path is correct
+                        }, 2000);  
+                    }, 500); 
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

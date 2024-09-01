@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Nini!</title>
+    <style>
+        /* Import a fun font */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+        /* Basic styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://www.icegif.com/wp-content/uploads/icegif-5810.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Dancing Script', cursive;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .overlay-gif {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://img1.picmix.com/output/stamp/normal/8/1/1/9/2529118_04235.gif') repeat;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Ensure content is above the overlay GIF */
+        }
+
+        .birthday-box {
+            display: inline-block;
+            padding: 20px 40px;
+            background: linear-gradient(45deg, #ff69b4, #ff6347, #ffa500);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: box-glow 1.5s infinite alternate;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .birthday-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            pointer-events: none;
+            animation: lightning 1s infinite alternate;
+        }
+
+        .birthday-text {
+            font-size: 48px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* GIFs */
+        .gif-container {
+            position: absolute;
+            bottom: -150px;
+            width: 150px;
+            height: auto;
+        }
+
+        .gif-left {
+            left: -200px;
+            animation: float-left 7s ease-in-out infinite;
+        }
+
+        .gif-right {
+            right: -200px;
+            animation: float-right 7s ease-in-out infinite;
+        }
+
+        .gif-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Balloons */
+        .balloons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .balloon {
+            width: 100px;
+            height: 150px;
+            background-color: #ff6347;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -150px;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .balloon:nth-child(2) {
+            background-color: #ffa500;
+            left: 100px;
+            animation-duration: 6s;
+        }
+
+        .balloon:nth-child(3) {
+            background-color: #00bfff;
+            left: 200px;
+            animation-duration: 7s;
+        }
+
+        .balloon:nth-child(4) {
+            background-color: #ff6347;
+            right: 0;
+            animation-duration: 5s;
+        }
+
+        .balloon:nth-child(5) {
+            background-color: #ffa500;
+            right: 100px;
+            animation-duration: 6s;
+        }
+
+        .balloon:nth-child(6) {
+            background-color: #00bfff;
+            right: 200px;
+            animation-duration: 7s;
+        }
+
+        /* Cats */
+        .cats {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .cat {
+            width: 80px;
+            height: 80px;
+            background-image: url('cat.png');
+            background-size: contain;
+            position: absolute;
+            animation: cat-dance 4s infinite;
+        }
+
+        .cat:nth-child(2) {
+            left: 100px;
+            animation-delay: 0.5s;
+        }
+
+        .cat:nth-child(3) {
+            left: 200px;
+            animation-delay: 1s;
+        }
+
+        /* Decorations */
+        .decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .spark {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            animation: spark-animation 2s infinite;
+        }
+
+        .spark:nth-child(1) { top: 10%; left: 10%; }
+        .spark:nth-child(2) { top: 20%; left: 80%; }
+        .spark:nth-child(3) { top: 50%; left: 30%; }
+        .spark:nth-child(4) { top: 70%; left: 70%; }
+        .spark:nth-child(5) { top: 90%; left: 20%; }
+
+        /* Keyframes */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-300px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes float-left {
+            0% { bottom: -150px; }
+            50% { bottom: 300px; }
+            100% { bottom: -150px; }
+        }
+
+        @keyframes float-right {
+            0% { bottom: -150px; }
+            50% { bottom: 300px; }
+            100% { bottom: -150px; }
+        }
+
+        @keyframes cat-dance {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes box-glow {
+            from {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            }
+            to {
+                box-shadow: 0 4px 20px rgba(255, 105, 180, 0.8);
+            }
+        }
+
+        @keyframes lightning {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                border-color: rgba(255, 255, 255, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+                border-color: rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        @keyframes spark-animation {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay-gif"></div> <!-- Overlay GIF covering the entire page -->
+
+    <div class="container">
+        <div class="gif-container gif-left">
+            <img src="https://www.gifs.cc/birthday/2019-balloons-ribbon-animation.gif" alt="Balloon GIF">
+        </div>
+        <div class="birthday-box">
+            <h1 class="birthday-text">Happy Birthday Nini!</h1>
+        </div>
+        <div class="gif-container gif-right">
+            <img src="https://www.gifs.cc/birthday/2019-balloons-ribbon-animation.gif" alt="Balloon GIF">
+        </div>
+        <div class="balloons">
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+        </div>
+        <div class="cats">
+            <div class="cat"></div>
+            <div class="cat"></div>
+            <div class="cat"></div>
+        </div>
+        <div class="decorations">
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+        </div>
+    </div>
+</body>
+</html>
