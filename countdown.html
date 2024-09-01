@@ -74,11 +74,14 @@
             transform: scale(1.1);
         }
 
-        .new-image {
+        .new-image-container {
+            margin-top: 20px; /* Adds spacing above the image container */
+        }
+
+        .new-image-container img {
             width: 300px; /* Adjust width as needed */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-top: 20px; /* Adds spacing above the image */
         }
 
         @keyframes textColorChange {
@@ -103,7 +106,11 @@
         <div class="countdown-box" onclick="startCountdown()">
             Click for a Surprise
         </div>
-        <img id="newImage" class="new-image" src="https://i.im.ge/2024/09/01/fYTJVT.Screenshot-95.png" alt="New Image">
+        <div class="new-image-container">
+            <a href="https://im.ge/i/fYTJVT">
+                <img src="https://i.im.ge/2024/09/01/fYTJVT.Screenshot-95.png" alt="Screenshot 95" border="0" />
+            </a>
+        </div>
     </div>
 
     <div id="countdown" class="countdown"></div>
@@ -113,7 +120,6 @@
             let countdownElement = document.getElementById('countdown');
             let countdownBox = document.querySelector('.countdown-box');
             let catImage = document.getElementById('catImage');
-            let newImage = document.getElementById('newImage');
             let countdown = 10;
 
             countdownBox.style.display = 'none';
