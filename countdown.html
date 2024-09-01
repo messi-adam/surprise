@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surprise</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap">
     <style>
         /* Basic styles */
         body {
@@ -11,7 +12,7 @@
             padding: 0;
             background: url('https://i.ytimg.com/vi/5zQBUoj7-ic/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDe8L6gZokwxsttwk8kcOPi5WRFNQ') no-repeat center center fixed;
             background-size: cover;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -19,6 +20,12 @@
             height: 100vh;
             flex-direction: column;
             transition: opacity 2s ease-in-out;
+            color: #333;
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
         }
 
         .countdown-box {
@@ -34,6 +41,11 @@
             animation: box-glow 1.5s infinite alternate;
             position: relative;
             margin: 20px 0; /* Adjusted margin to create space between images */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .countdown-box:hover {
+            transform: scale(1.05);
         }
 
         .countdown {
@@ -55,20 +67,18 @@
             width: 300px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
         }
 
-        .bottom-right-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
+        .cat-image:hover {
+            transform: scale(1.1);
         }
 
-        .bottom-right-image {
-            width: 300px;
-            height: auto;
+        .new-image {
+            width: 300px; /* Adjust width as needed */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px; /* Adds spacing above the image */
         }
 
         @keyframes textColorChange {
@@ -93,9 +103,7 @@
         <div class="countdown-box" onclick="startCountdown()">
             Click for a Surprise
         </div>
-        <div class="bottom-right-container">
-           <img src="Screenshot (95).png" alt="Bottom Right Image" class="bottom-right-image" id="bottomRightImage"> 
-        </div>
+        <img id="newImage" class="new-image" src="https://i.im.ge/2024/09/01/fYTJVT.Screenshot-95.png" alt="New Image">
     </div>
 
     <div id="countdown" class="countdown"></div>
@@ -105,6 +113,7 @@
             let countdownElement = document.getElementById('countdown');
             let countdownBox = document.querySelector('.countdown-box');
             let catImage = document.getElementById('catImage');
+            let newImage = document.getElementById('newImage');
             let countdown = 10;
 
             countdownBox.style.display = 'none';
